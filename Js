@@ -1,0 +1,45 @@
+const toggle = document.querySelector(".nav-toggle");
+const navigation = document.querySelector(".nav-links");
+
+if (toggle && navigation) {
+
+    toggle.addEventListener("click", () => {
+
+        const isOpen =
+            navigation.classList.toggle("open");
+
+        toggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+    });
+
+
+    navigation
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navigation.classList.remove("open");
+
+                toggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            });
+
+        });
+}
+
+
+/* CURRENT YEAR */
+
+const year = document.querySelector("#year");
+
+if (year) {
+    year.textContent =
+        new Date().getFullYear();
+}
